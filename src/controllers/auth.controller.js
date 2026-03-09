@@ -39,9 +39,16 @@ const token = jwt.sign(
     { expiresIn: '1d' }
 )
 
-res.status(201).json({
-    message: 'User registered successfully',
-})
+// set cookie with token for immediate authentication
+    res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
+    res.status(201).json({
+        message: 'User registered successfully',
+        user: {
+            id: user._id,
+            username: user.username,
+            email: user.email
+        }
+    });
 }
 
 
