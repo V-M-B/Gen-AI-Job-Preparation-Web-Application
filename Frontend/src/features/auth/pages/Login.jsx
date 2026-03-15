@@ -1,8 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router'
 import '../auth.form.scss'
+import { useAuth } from '../hooks/use.auth.js'
 
 const Login = () => {
+
+    const {loading, handleLogin} = useAuth()
+
+    const [email, setEmail] = React.useState('')
+    const [password, setPassword] = React.useState('')
+
+
+    const onhandleSubmit = async (e) => {
+        e.preventDefault();
+        await handleLogin({ email, password });
+    }
     return (
         <main>
             <div className="form-container">

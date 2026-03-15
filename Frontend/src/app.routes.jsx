@@ -8,6 +8,10 @@ export const router = createBrowserRouter([
         element: <Login />
     },
     {
+        path: "/get-me",
+        element: <GetMe />
+    },
+    {
         path: "/login",
         element: <Login />
     },
