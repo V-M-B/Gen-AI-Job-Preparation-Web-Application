@@ -27,7 +27,7 @@ const Register = () => {
 
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
-                        <label htmlFor="username    ">Username</label>
+                        <label htmlFor="username">Username</label>
                         <input type="text" placeholder='Username' 
                         onChange={(e)=>{setusername(e.target.value)}}
                         />
@@ -41,7 +41,8 @@ const Register = () => {
                     </div>
 
                     <div className="input-group">
-                        <label htmlFor="password">Password</label><input type="password" placeholder='Password'
+                        <label htmlFor="password">Password</label>
+                        <input type="password" placeholder='Password'
                          onChange={(e)=>{setPassword(e.target.value)}}
                         />
                     </div>
