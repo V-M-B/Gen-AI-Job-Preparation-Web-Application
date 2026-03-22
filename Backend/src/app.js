@@ -1,26 +1,25 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const app = express();
-const cors = require('cors');
+const express = require("express")
+const cookieParser = require("cookie-parser")
+const cors = require("cors")
 
-// using cors for cross origin resource sharing 
+const app = express()
+
+app.use(express.json())
+app.use(cookieParser())
 app.use(cors({
-    origin: 'http://localhost:5173', // allow requests from this origin
-    credentials: true, // allow cookies to be sent with requests
-
+    origin: "http://localhost:5173",
+    credentials: true
 }))
 
-app.use(express.json());
-// populate req.cookies
-app.use(cookieParser());
+/* require all the routes here */
+const authRouter = require("./routes/auth.routes")
+const interviewRouter = require("./routes/interview.routes")
+
+
+/* using all the routes here */
+app.use("/api/auth", authRouter)
+app.use("/api/interview", interviewRouter)
 
 
 
-// require all the routes here
-const authRouter = require('./route/auth.routes');
-
-
-// using all the routes here 
-app.use('/api/auth', authRouter);
-
-module.exports = app;
+module.exports = app
